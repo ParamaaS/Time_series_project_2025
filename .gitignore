@@ -1,0 +1,33 @@
+# Ignore the .env file
+.env
+
+# Ignore the .csv,.pdf,.rar,.txt file
+*.csv
+*.pdf
+*.rar
+*.txt
+*.xlsx
+*.jpg
+*.png
+*.avif
+
+# Ignore specific folders
+# folder_to_ignore/
+
+# Ignore Python compiled files
+__pycache__/
+*.pyc
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore virtual environment folders
+venv/
+env/
+*.egg-info/
+dist/
+build/
+
+# Ignore any other files or folders you want to exclude
+*.log
+*.DS_Store
