@@ -10,21 +10,28 @@ def fast_dtw(time_series_datas):
     # Example: Fast Dynamic Time Warping (FastDTW) Algorithm
     distance_matrix = np.zeros((len(time_series_datas), len(time_series_datas)))
     for i in range(len(time_series_datas)):
-        for j in range(len(time_series_datas)):
-            distance, _ = fastdtw(time_series_datas[i], time_series_datas[j], dist=euclidean)
-            print(distance)
+        for j in range(i+1,len(time_series_datas)):
+            distance, path  = fastdtw(time_series_datas[i], time_series_datas[j], dist=euclidean)
+            print(distance,path,sep="\n")
             distance_matrix[i, j] = distance    
     return distance_matrix
 
 def plot_chart(time_series_datas):
-    # Example: Plotting Time Series Data
-    for i in range(len(time_series_datas)):
-        plt.plot(time_series_datas[i], label=f"Time Series {i}")
-        plt.xlabel("Index")
-        plt.ylabel("Value")
-        plt.title(f"Time Series Data {i}")       
-        plt.legend()
-        plt.show()
+    n = len(time_series_datas)  # Number of time series
+    colors = plt.cm.tab10(np.arange(n))  # Generate 'n' distinct colors
+
+    fig, axes = plt.subplots(n, 1, figsize=(20, 3 * n), sharex=True)  # Create subplots
+
+    for i, (series, color) in enumerate(zip(time_series_datas, colors)):
+        axes[i].plot(series, label=f"Time Series {i}", color=color, marker='o', linestyle='',markersize=1)  # Plot each series
+        axes[i].set_ylabel("Value")
+        axes[i].set_title(f"Time Series of Snoopy{i+1}")
+        # axes[i].legend()
+        axes[i].grid(True)
+
+    axes[-1].set_xlabel("Index")  # Set X label only for the last subplot
+    plt.tight_layout()  # Adjust layout to prevent overlap
+    plt.show()
 
 def picture_gen():
     # Example: Extract Average Pixel Intensity from a Sequence of Images
@@ -46,8 +53,8 @@ def picture_gen():
 
 def main():
     time_series_datas=picture_gen()
-    # plot_chart(time_series_datas)
-    print(fast_dtw(time_series_datas))
+    plot_chart(time_series_datas)
+    # print(fast_dtw(time_series_datas))
 
 if __name__=="__main__":
     main()
