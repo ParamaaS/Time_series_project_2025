@@ -20,12 +20,12 @@ def plot_chart(time_series_datas):
     n = len(time_series_datas)  # Number of time series
     colors = plt.cm.tab10(np.arange(n))  # Generate 'n' distinct colors
 
-    fig, axes = plt.subplots(n, 1, figsize=(20, 3 * n), sharex=True)  # Create subplots
+    fig, axes = plt.subplots(n, 1, figsize=(8, 2 * n), sharex=True)  # Create subplots
 
     for i, (series, color) in enumerate(zip(time_series_datas, colors)):
         axes[i].plot(series, label=f"Time Series {i}", color=color, marker='o', linestyle='',markersize=1)  # Plot each series
         axes[i].set_ylabel("Value")
-        axes[i].set_title(f"Time Series of Snoopy{i+1}")
+        axes[i].set_title(f"Time Series of line {i+1}")
         # axes[i].legend()
         axes[i].grid(True)
 
@@ -35,11 +35,11 @@ def plot_chart(time_series_datas):
 
 def picture_gen():
     # Example: Extract Average Pixel Intensity from a Sequence of Images
-    image_names = ["snoopy2a", "snoopy2b", "snoopy2c"] 
+    image_names = ["line1", "line2", "line3","line4"] 
     time_series_datas = []
 
     for idx, img_name in enumerate(image_names):
-        img_path="pictures"+"/"+img_name+".jpg"
+        img_path="pictures"+"/"+img_name+".png"
         img = cv2.imread(img_path, cv2.IMREAD_GRAYSCALE)  # Read as grayscale
         # avg_intensity = np.mean(img)  # Compute average pixel intensity        
         df = pd.DataFrame(img)
@@ -47,7 +47,7 @@ def picture_gen():
         print(df)
         # df= df.stack().reset_index(drop=True)
         df= df.stack().reset_index(drop=True).to_frame(name="Values")
-        # df.to_csv(f"pixel_{img_name}.csv",index=False)
+        df.to_csv(f"pixel_{img_name}.csv",index=False)
         time_series_datas.append(df)
     return time_series_datas
 
