@@ -17,7 +17,6 @@ def cal():
         df_1d = df.stack().reset_index(drop=True).to_frame(name="Values")
         df_1d.to_csv(f"pixel_intensity{idx}.csv",index=False)
 
-
 def main():
     cal()
 
