@@ -46,8 +46,10 @@ def plot_chart_consol(time_series_datas):
 
 def picture_gen():
     # Example: Extract Average Pixel Intensity from a Sequence of Images
-    image_names = ["color1","color2","color3","color4","color5"]
-    # image_names = ["line1","line2","line3","line4"] 
+    
+    image_names = ["line1","line2","line3","line4"]
+    # image_names = ["color1","color2","color3","color4","color5"] 
+    # image_names = ["stripe1","stripe2","stripe3","stripe4","stripe5"]
     time_series_datas = []
 
     for idx, img_name in enumerate(image_names):
@@ -67,7 +69,8 @@ def picture_gen():
 
 def main():
     time_series_datas=picture_gen()
-    plot_chart_consol(time_series_datas)
+    plot_chart_seperate(time_series_datas)
+    # plot_chart_consol(time_series_datas)
     # print(fast_dtw(time_series_datas))
 
 if __name__=="__main__":
