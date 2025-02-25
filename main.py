@@ -23,7 +23,7 @@ def plot_chart_seperate(time_series_datas):
     fig, axes = plt.subplots(n, 1, figsize=(8, 1 * n), sharex=True)  # Create subplots
 
     for i, (series, color) in enumerate(zip(time_series_datas, colors)):
-        axes[i].plot(series, label=f"Time Series {i}", color=color, marker='o',linestyle='',markersize=1)  # Plot each series
+        axes[i].plot(series, label=f"Time Series {i}", color=color, marker='o',markersize=1)  # Plot each series
         axes[i].set_ylabel("Value")
         axes[i].set_title(f"Time Series of pic {i+1}")
         axes[i].grid(True)
@@ -37,19 +37,19 @@ def plot_chart_consol(time_series_datas):
     colors = plt.cm.tab10(np.arange(n))  # Generate 'n' distinct colors
 
     for i, (series, color) in enumerate(zip(time_series_datas, colors)):
-        plt.plot(series, label=f"Time Series {i}", color=color, marker='o',linestyle='',markersize=1)  # Plot each series
-    
+        plt.plot(series, label=f"Color {i+1}", color=color, marker='o',linestyle='',markersize=5)  # Plot each series
     plt.ylabel("Value")
     plt.grid(True)
     plt.legend()
     plt.show()
 
+
 def picture_gen():
     # Example: Extract Average Pixel Intensity from a Sequence of Images
     
-    image_names = ["line1","line2","line3","line4"]
+    # image_names = ["line1","line2","line3","line4","line5","line6"]
     # image_names = ["color1","color2","color3","color4","color5"] 
-    # image_names = ["stripe1","stripe2","stripe3","stripe4","stripe5"]
+    image_names = ["stripe1","stripe2","stripe3","stripe4","stripe5"]
     time_series_datas = []
 
     for idx, img_name in enumerate(image_names):
